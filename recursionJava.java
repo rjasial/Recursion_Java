@@ -40,9 +40,18 @@ public class recursionJava {
     // HashSet<String> set = new HashSet<>();
     // uniqueSubsequnece(str, 0, "", set);
 
-    String str = "23";
-    keypadCombination(str, 0, "");
+    // String str = "23";
+    // keypadCombination(str, 0, "");
 
+    String str = "abc";
+    permutation(str, 0, "");
+
+    // int n = 3;
+    // int m = 3;
+
+    System.out.println(countMazePaths(0, 0, 3, 3));
+
+    System.out.println(placeTiles(3, 2));
 
 
     }
@@ -298,10 +307,58 @@ public static void keypadCombination(String str, int idx, String combination) {
 /// Advance recursion
 /// 
 
+// permutaion count
 
+public static void permutation(String str, int idx, String perm) {
 
-
+    if(str.length() == 0){
+        System.out.println(perm);
+        return;
+    }
     
+
+    for(int i = 0; i < str.length(); i++){
+    char currChar = str.charAt(i);
+
+    String newStr = str.substring(0, i) + str.substring(i+1);
+
+    permutation(newStr, idx+1, perm+currChar);
+    }
+}
+
+
+
+// Count maze paths
+
+
+public static int countMazePaths(int i , int j,  int m, int n) {
+
+    if(i == m-1 || j == n-1){
+        return 1;
+    }
+    
+
+
+    return countMazePaths(i+1, j, m, n) + countMazePaths(i, j+1, m, n);
+
+
+}
+
+// place tiles
+
+public static int placeTiles(int n, int m) {
+    
+    if(n == m){
+        return 2;
+    }
+
+    if(n<m){
+        return 1;
+    }
+
+
+    return placeTiles(n-m, m) + placeTiles(n-1, m);
+}
 
 
 
