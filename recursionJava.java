@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.ArrayList;
 
 public class recursionJava {
     public static void main(String[] args) {
@@ -33,26 +34,34 @@ public class recursionJava {
     // String str = "aaabbccaaaddddefffeg";
     // removeDuplicates(str, 0, "");
 
-    // String str = "abc";
-    // Subsequnece(str, 0, "");
+     //String str = "abc";
+     //Subsequnece(str, 0, "");
  
-    // String str = "aaa";
-    // HashSet<String> set = new HashSet<>();
-    // uniqueSubsequnece(str, 0, "", set);
+     String str = "aaa";
+     HashSet<String> set = new HashSet<>();
+     uniqueSubsequnece(str, 0, "", set);
 
     // String str = "23";
     // keypadCombination(str, 0, "");
 
-    String str = "abc";
-    permutation(str, 0, "");
+    //String str = "abc";
+    //permutation(str, 0, "");
 
     // int n = 3;
     // int m = 3;
 
-    System.out.println(countMazePaths(0, 0, 3, 3));
+    // System.out.println(countMazePaths(0, 0, 3, 3));
 
-    System.out.println(placeTiles(3, 2));
+    // System.out.println(placeTiles(3, 2));
 
+    // System.out.println(countPairs(4));
+
+
+
+
+    int n = 3;
+    ArrayList<Integer> subset = new ArrayList<>();
+    findSubset(n, subset);
 
     }
 
@@ -360,9 +369,41 @@ public static int placeTiles(int n, int m) {
     return placeTiles(n-m, m) + placeTiles(n-1, m);
 }
 
+// Party invite in pairs or singles
 
+public static int countPairs(int n) {
 
+    if(n<=1){
+        return 1;
+    }
 
+    return countPairs(n-1) + (n-1)*countPairs(n-2);
+}
+
+//subset of a number
+
+public static void printSubset( ArrayList<Integer> subset) {
+
+    for(int i = 0; i<subset.size(); i++){
+        System.out.print(subset.get(i) + " ");
+    }
+    System.out.println();
+}
+
+public static void findSubset(int n, ArrayList<Integer> subset) {
+
+    if(n ==0){
+        printSubset(subset);
+        return;
+    }
+    
+
+    subset.add(n);
+    findSubset(n-1, subset);
+
+    subset.remove(subset.size()-1);
+    findSubset(n-1, subset);
+}
 
 
 }
