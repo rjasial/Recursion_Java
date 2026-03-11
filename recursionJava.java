@@ -331,7 +331,7 @@ public static void permutation(String str, int idx, String perm) {
 
     String newStr = str.substring(0, i) + str.substring(i+1);
 
-    permutation(newStr, idx+1, perm+currChar);
+    permutation(newStr, idx+1, perm+currChar); 
     }
 }
 
@@ -404,6 +404,7 @@ public static void findSubset(int n, ArrayList<Integer> subset) {
     subset.remove(subset.size()-1);
     findSubset(n-1, subset);
 }
+
 
 
 }
